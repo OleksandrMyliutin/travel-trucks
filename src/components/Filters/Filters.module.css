@@ -1,0 +1,28 @@
+.spanTitle{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--color-gray);
+}
+
+.containerContent{
+    width: 360px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+}
+
+.lineStyle{
+    border: none;
+    height: 1px;
+    background:var(--color-grayLight);
+}
+
+.containerVehicle{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
+

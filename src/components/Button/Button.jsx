@@ -6,7 +6,7 @@ const Button = ({link, to='/catalog', children}) => {
     return (
         <>
             {link && <Link to={to} className={s.btnLink}><span className={s.btnValue}>{children}</span></Link>}
-            {!link && <button className={s.btnContainer}>
+            {!link && <button className={s.btnContainer} type='button'>
                 <span className={s.btnValue}>{children}</span>
             </button>}
         </>
