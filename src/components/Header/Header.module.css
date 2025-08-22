@@ -1,0 +1,25 @@
+.headerContainer{
+    background: var(--color-inputs);
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.flexContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 450px;
+}
+
+.navContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 32px;
+}
+
+.navLink{
+    color: var(--color-main);
+}
+
+.activeLink{
+    color: var(--color-buttonHover);
+}

@@ -1,0 +1,21 @@
+.heroContainer{
+    background-image: url("../../assets/images/Picture.webp");
+    background-size: cover;
+    background-position: center;
+    width: 1440px;
+    height: 696px;
+    margin: 0 auto;
+}
+
+.title{
+    padding-left: 64px;
+    padding-top: 260px;
+    /* width: 571px; */
+}
+
+.text{
+    display: flex;
+    row-gap: 16px;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
