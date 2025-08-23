@@ -3,6 +3,7 @@ import Home from "./pages/Home/Home"
 import Catalog from "./pages/Catalog/Catalog"
 import Details from "./pages/Details/Details"
 import Layout from "./components/Layout/Layout"
+import PageNotFound from "./pages/PageNotFound/PageNotFound"
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
             path="/catalog/:id"
             element={<Details/>}
           />
+          <Route
+          path="*"
+          element={<PageNotFound/>}/>
         </Routes>
       </Layout>
     </>

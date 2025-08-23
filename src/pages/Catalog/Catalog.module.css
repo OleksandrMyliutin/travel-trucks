@@ -1,7 +1,20 @@
-.bodyMargin{
+.catalogGrid {
+    display: grid;
+    grid-template-columns: 360px 1fr; /* ліва колонка 280px, права займає все */
+    column-gap: 64px;
     margin-top: 48px;
 }
 
-.btnContainer{
-    margin-top: 40px;
+/* ліва частина */
+.LocationFiltersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* права частина */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
 }

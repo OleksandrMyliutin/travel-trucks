@@ -1,14 +1,20 @@
-// import React from 'react'
+import React from 'react';
+import { useAppSelector } from '../../redux/hooks';
+import { selectAllProducts } from '../../redux/products/selectors';
+import CatalogItem from '../CatalogItem/CatalogItem';
 
-// const CatalogCards = () => {
+import s from './CatalogCards.module.css';
 
-//     return (
-//         <>
-//             <ul>
-//                 {.map()}
-//             </ul>
-//         </>
-//     )
-// }
+const CatalogCards = () => {
+    const products = useAppSelector(selectAllProducts);
 
-// export default CatalogCards
+    return (
+        <ul className={s.cardsFlex}>
+        {products.map((product) => (
+            <CatalogItem key={product.id} product={product} />
+        ))}
+        </ul>
+    );
+};
+
+export default CatalogCards;
