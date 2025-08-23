@@ -4,16 +4,15 @@ import { FaStar } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa6';
 import { SlMap } from "react-icons/sl";
 import Button from '../Button/Button';
+import { CATEGORIES } from '../../utils/categories';
 
 const CatalogItem = ({ product }) => {
     return (
             <li className={s.card}>
-                {/* Фото */}
                 <div className={s.imageWrapper}>
                     <img src={product.gallery?.[0]?.thumb} alt={product.name} className={s.image} />
                 </div>
 
-                {/* Контент */}
                 <div className={s.content}>
                     <div className={s.headerContainer}>
                         <div className={s.header}>
@@ -36,22 +35,21 @@ const CatalogItem = ({ product }) => {
                         </div>
                     </div>
 
-
-                    {/* Опис */}
                     <p className={s.description}>{product.description}</p>
 
-                    {/* Характеристики */}
                     <div className={s.tags}>
-                        {product.transmission && <span className={s.tag}>{product.transmission}</span>}
-                        {product.engine && <span className={s.tag}>{product.engine}</span>}
-                        {product.form && <span className={s.tag}>{product.form}</span>}
-                        {product.AC && <span className={s.tag}>AC</span>}
-                        {product.bathroom && <span className={s.tag}>Bathroom</span>}
-                        {product.kitchen && <span className={s.tag}>Kitchen</span>}
-                        {product.microwave && <span className={s.tag}>Microwave</span>}
+                        {Object.entries(CATEGORIES).map(([key, { label, icon }]) => {
+                            if (product[key]) {
+                            return (
+                                <span key={key} className={s.tag}>
+                                <img src={icon} alt={label} />
+                                {label}
+                                </span>
+                            );
+                            }
+                            return null;
+                        })}
                     </div>
-
-                    {/* Кнопка */}
                     <Button link to={`${'/catalog/'}${product.id}`}>Show more</Button>
                 </div>
         </li>

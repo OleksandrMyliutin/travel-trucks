@@ -10,6 +10,11 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { loadProducts } from '../../redux/products/operations';
 import { selectIsLoading } from '../../redux/products/selectors'
 
+import { selectHasNextPage } from '../../redux/products/selectors';
+import { incrementPage } from '../../redux/products/slice';
+import LoadMore from '../../components/LoadMore/LoadMore'
+
+
 const Catalog = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
@@ -19,6 +24,12 @@ const Catalog = () => {
   const handleSearch = () => {
     dispatch(loadProducts());
   };
+    const hasNextPage = useAppSelector(selectHasNextPage);
+
+    const handleLoadMore = () => {
+        dispatch(incrementPage());
+        dispatch(loadProducts());
+    };
   return (
     <>
       <Container>
@@ -29,11 +40,18 @@ const Catalog = () => {
             <Button onClick={handleSearch}>Search</Button>
           </aside>
           <main className={s.cards}>
-            {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <CatalogCards />
-          )}
+            <div className={s.container}>
+              {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <CatalogCards />
+            )}
+              {hasNextPage && (
+                <div className={s.loadMoreWrapper}>
+                    <LoadMore onClick={handleLoadMore}/>
+                </div>
+              )}
+            </div>
           </main>
         </div>
       </Container>
