@@ -4,7 +4,7 @@ import { loadProducts } from './operations';
 const initialState = {
     items: [],
     favoriteProducts: [],
-    filter: { page: 1, perPage: 2 },
+    filter: { page: 1, perPage: 4 },
     totalItems: 0,
     isLoading: false,
 };
