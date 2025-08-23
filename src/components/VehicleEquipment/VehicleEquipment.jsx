@@ -14,19 +14,19 @@ const VehicleEquipment = () => {
     const selected = useAppSelector(state => state.products.filter.equipment || []);
 
     const options = [
-        { label: "AC", icon: AC },
-        { label: "Automatic", icon: Automatic },
-        { label: "Kitchen", icon: Kitchen },
-        { label: "TV", icon: TV },
-        { label: "Bathroom", icon: Bathroom }
+        { label: "AC", value: "AC", icon: AC },
+        { label: "Automatic", value: "transmission=automatic", icon: Automatic },
+        { label: "Kitchen", value: "kitchen", icon: Kitchen },
+        { label: "TV", value: "TV", icon: TV },
+        { label: "Bathroom", value: "bathroom", icon: Bathroom }
     ];
 
-    const handleToggle = (label) => {
+    const handleToggle = (value) => {
         let updated;
-        if (selected.includes(label)) {
-        updated = selected.filter(item => item !== label);
+        if (selected.includes(value)) {
+        updated = selected.filter(item => item !== value);
         } else {
-        updated = [...selected, label];
+        updated = [...selected, value];
         }
         dispatch(setFilter({ equipment: updated }));
     };
@@ -34,11 +34,11 @@ const VehicleEquipment = () => {
     return (
     <div className={s.filters}>
         {options.map((opt) => (
-        <label key={opt.label} className={s.filterOption}>
+        <label key={opt.value} className={s.filterOption}>
             <input
             type="checkbox"
-            checked={selected.includes(opt.label)}
-            onChange={() => handleToggle(opt.label)}
+            checked={selected.includes(opt.value)}
+            onChange={() => handleToggle(opt.value)}
             />
             <img src={opt.icon} alt={opt.label} />
             <span className={s.label}>{opt.label}</span>

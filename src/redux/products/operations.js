@@ -7,25 +7,22 @@ export const loadProducts = createAsyncThunk(
     async (_, { rejectWithValue, dispatch, getState }) => {
     const state = getState();
     const filter = { ...state.products.filter };
-    const { page } = filter;
-    const { perPage, ...queryParams } = filter;
+    const { page, perPage } = filter;
 
     if (page === 1) dispatch(clearProducts());
 
     try {
-        const data = await fetchAllProducts(queryParams);
+        const params = {
+            page,
+            limit: perPage,
+        };
 
-        const paginatedItems = data.items.slice(
-        (page - 1) * perPage,
-        (page - 1) * perPage + perPage
-    );
+        const data = await fetchAllProducts(params);
+        return data;
 
-        data.items = paginatedItems;
-
-    return data;
-    } catch {
-    console.log('Error caught in operations...');
-    return rejectWithValue('');
+        } catch (err) {
+        console.log('Error caught in operations...', err);
+        return rejectWithValue('');
+        }
     }
-}
 );

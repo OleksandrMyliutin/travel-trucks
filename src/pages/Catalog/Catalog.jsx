@@ -6,18 +6,21 @@ import Button from '../../components/Button/Button'
 import s from './Catalog.module.css'
 import CatalogCards from '../../components/CatalogCards/CatalogCards'
 
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { loadProducts } from '../../redux/products/operations';
-import { selectIsLoading } from '../../redux/products/selectors'
+import { selectAllProducts, selectIsLoading } from '../../redux/products/selectors'
 
 import { selectHasNextPage } from '../../redux/products/selectors';
 import { incrementPage } from '../../redux/products/slice';
 import LoadMore from '../../components/LoadMore/LoadMore'
+import { Loader } from '../../components/Loader/Loader'
 
 
 const Catalog = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
+  const products = useAppSelector(selectAllProducts);
   useEffect(() => {
     dispatch(loadProducts());
   }, [dispatch]);
@@ -40,18 +43,19 @@ const Catalog = () => {
             <Button onClick={handleSearch}>Search</Button>
           </aside>
           <main className={s.cards}>
-            <div className={s.container}>
-              {isLoading ? (
-              <p>Loading...</p>
+              {isLoading && products.length === 0 ? (
+              <Loader/>
             ) : (
-              <CatalogCards />
+              (<>
+                <CatalogCards />
+                {isLoading && products.length > 0 && (
+                  <div className={s.loadMoreWrapper}>
+                    <Loader size="30" />
+                  </div>
+                )}
+                {hasNextPage && !isLoading && (<LoadMore onClick={handleLoadMore}/>)}
+              </>)
             )}
-              {hasNextPage && (
-                <div className={s.loadMoreWrapper}>
-                    <LoadMore onClick={handleLoadMore}/>
-                </div>
-              )}
-            </div>
           </main>
         </div>
       </Container>

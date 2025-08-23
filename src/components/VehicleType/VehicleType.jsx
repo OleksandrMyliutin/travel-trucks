@@ -9,34 +9,35 @@ import s from './VehicleType.module.css';
 
 const VehicleType = () => {
     const dispatch = useAppDispatch();
-    const selected = useAppSelector(state => state.products.filter.type || "");
+    const selected = useAppSelector(state => state.products.filter.form || "");
 
     const options = [
-        { label: "Van", icon: Van },
-        { label: "Fully Integrated", icon: FullyIntegrated },
-        { label: "Alcove", icon: Alcove }
+        { label: "Van", value: "panelTruck", icon: Van },
+        { label: "Fully Integrated", value: "fullyIntegrated", icon: FullyIntegrated },
+        { label: "Alcove", value: "alcove", icon: Alcove }
     ];
 
-    const handleSelect = (label) => {
-        dispatch(setFilter({ type: label }));
+    const handleSelect = (value) => {
+        dispatch(setFilter({ form: value }));
     };
 
     return (
-        <div className={s.filters}>
+    <div className={s.filters}>
         {options.map((opt) => (
-            <label key={opt.label} className={s.filterOption}>
+        <label key={opt.value} className={s.filterOption}>
             <input
-                type="radio"
-                name="vehicleType"
-                checked={selected === opt.label}
-                onChange={() => handleSelect(opt.label)}
+            type="radio"
+            name="vehicleType"
+            checked={selected === opt.value}
+            onChange={() => handleSelect(opt.value)}
             />
             <img src={opt.icon} alt={opt.label} />
             <span className={s.label}>{opt.label}</span>
-            </label>
+        </label>
         ))}
-        </div>
+    </div>
     );
 };
+
 
 export default VehicleType;

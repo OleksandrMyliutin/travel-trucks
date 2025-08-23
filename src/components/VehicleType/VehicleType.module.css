@@ -33,7 +33,7 @@
 
 .filterOption:has(input:checked) {
     border-color: var(--color-button);
-    background: #f9f9ff;
+    background: transparent;
 }
 
 .filterOption img {

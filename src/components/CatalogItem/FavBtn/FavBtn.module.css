@@ -1,0 +1,16 @@
+.favBtn {
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-main);
+    transition: color 0.2s ease;
+}
+
+.favBtn:hover {
+    color: var(--color-button);
+    background: transparent;
+}
+
+.favBtn.active {
+    color: var(--color-button);
+    background: transparent;
+}

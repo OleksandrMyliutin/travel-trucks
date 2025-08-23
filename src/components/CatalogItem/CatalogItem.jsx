@@ -5,6 +5,7 @@ import { FaRegHeart } from 'react-icons/fa6';
 import { SlMap } from "react-icons/sl";
 import Button from '../Button/Button';
 import { CATEGORIES } from '../../utils/categories';
+import FavBtn from './FavBtn/FavBtn';
 
 const CatalogItem = ({ product }) => {
     return (
@@ -19,9 +20,7 @@ const CatalogItem = ({ product }) => {
                             <h3 className={s.title}>{product.name}</h3>
                             <div className={s.priceBlock}>
                                 <span className={s.price}>€{product.price}.00</span>
-                                <button className={s.favBtn}>
-                                    <FaRegHeart size={20} />
-                                </button>
+                                <FavBtn productId={product.id} />
                             </div>
                         </div>
     
