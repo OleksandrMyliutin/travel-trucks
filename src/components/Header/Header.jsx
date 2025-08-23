@@ -12,7 +12,7 @@ const Header = () => {
                     <img src={svg} alt="logo" />
                     <nav className={s.navContainer}>
                         <NavLink to={'/'} className={navLink}>Home</NavLink>
-                        <NavLink to={'/catalog'} className={navLink}>Catalog</NavLink>
+                        <NavLink to={'/catalog'} className={navLink} end>Catalog</NavLink>
                     </nav>
                 </div>
             </Container>

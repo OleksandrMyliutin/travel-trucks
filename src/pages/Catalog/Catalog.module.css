@@ -1,6 +1,6 @@
 .catalogGrid {
     display: grid;
-    grid-template-columns: 360px 1fr; /* ліва колонка 280px, права займає все */
+    grid-template-columns: 360px 1fr;
     column-gap: 64px;
     margin-top: 48px;
 }
