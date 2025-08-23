@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Filters.module.css'
 import VehicleEquipment from '../VehicleEquipment/VehicleEquipment'
 import VehicleType from '../VehicleType/VehicleType'
-import Button from '../Button/Button'
+
 
 const Filters = () => {
     return (
@@ -17,7 +17,6 @@ const Filters = () => {
                 <h3>Vehicle type</h3>
                 <span><hr className={s.lineStyle}/></span>
                 <VehicleType/>
-                <Button>Search</Button>
             </div>
         </div>
     )
