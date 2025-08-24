@@ -1,7 +1,6 @@
 import React from 'react'
 import s from './Hero.module.css'
 import Button from '../Button/Button'
-import Container from '../Container/Container'
 
 const Hero = () => {
     return (

@@ -10,48 +10,43 @@ const buildQuery = (filter) => {
     p.append("limit", String(filter.perPage || 4));
 
     if (filter.location) p.append("location", filter.location);
-
     if (filter.type) p.append("form", filter.type);
 
+    // equipment
     if (Array.isArray(filter.equipment)) {
+        let transmission = null;
+
         filter.equipment.forEach(tok => {
         if (!tok) return;
-        if (tok.includes("=")) {
-            const [k, v] = tok.split("=");
-            if (k && v) p.append(k, v);
+        if (tok.startsWith("transmission=")) {
+            transmission = tok.split("=")[1] || null;
         } else {
-            p.append(tok, "true");
+            p.append(tok, "true"); // AC -> AC=true
         }
         });
+
+        if (transmission) p.append("transmission", transmission);
     }
 
     return `?${p.toString()}`;
 };
 
+
 export const loadProducts = createAsyncThunk(
     'products/load',
     async (_, { rejectWithValue, dispatch, getState }) => {
-    const state = getState();
-    const filter = { ...state.products.filter };
-    const { page } = filter;
-    const { perPage, ...queryParams } = filter;
+        try {
+        const { filter } = getState().products;
 
-    if (page === 1) dispatch(clearProducts());
+        if (filter.page === 1) dispatch(clearProducts());
 
-    try {
-        const data = await fetchAllProducts(queryParams);
-
-        const paginatedItems = data.items.slice(
-            (page - 1) * perPage,
-            (page - 1) * perPage + perPage
-        );
-
-        data.items = paginatedItems;
+        const qs = buildQuery(filter);
+        const data = await fetchAllProducts(qs);
 
         return data;
-        } catch {
-            console.log('Error caught in operations...');
-            return rejectWithValue('');
+        } catch (e) {
+        console.log('Error caught in operations...', e);
+        return rejectWithValue(e?.message || '');
         }
     }
 );

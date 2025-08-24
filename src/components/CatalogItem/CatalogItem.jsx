@@ -29,7 +29,7 @@ const CatalogItem = ({ product }) => {
                                 <FaStar className={s.star} /> {product.rating} ({product.reviews?.length || 0} Reviews)
                             </span>
                             <span className={s.location}>
-                                <SlMap size={16}/> {product.location}
+                                <SlMap size={16} className={s.SvgStyle}/> {product.location}
                             </span>
                         </div>
                     </div>

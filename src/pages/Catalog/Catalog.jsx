@@ -21,20 +21,15 @@ const Catalog = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
   const products = useAppSelector(selectAllProducts);
-  const { filterVersion, filter } = useAppSelector(s => s.products);
+  const version = useAppSelector(s => s.products.filterVersion);
   useEffect(() => {
     dispatch(clearProducts());
     dispatch(loadProducts());
-  }, [dispatch, filterVersion]);
+  }, [dispatch, version]);
   const handleSearch = () => {
-   dispatch(applyFilters());
+    dispatch(applyFilters());
   };
 
-  useEffect(() => {
-    if (filter.page > 1) {
-      dispatch(loadProducts());
-    }
-  }, [dispatch, filter.page]);
 
     const hasNextPage = useAppSelector(selectHasNextPage);
 

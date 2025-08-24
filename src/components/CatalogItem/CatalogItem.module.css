@@ -23,7 +23,6 @@
     min-height: 320px;
     overflow: hidden;
     flex-shrink: 0; 
-    overflow: hidden;
 }
 
 .content{
@@ -86,6 +85,10 @@
     display: flex;
     column-gap: 4px;
     align-items: center;
+}
+
+.SvgStyle{
+    transform: scaleY(-1);
 }
 
 .description{
