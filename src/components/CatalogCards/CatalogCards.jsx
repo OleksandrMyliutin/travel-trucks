@@ -3,10 +3,10 @@ import CatalogItem from '../CatalogItem/CatalogItem';
 import s from './CatalogCards.module.css';
 import LoadMore from '../LoadMore/LoadMore';
 import { selectAllProducts } from '../../redux/products/selectors';
-import { useAppSelector } from '../../redux/hooks';
+import { useSelector } from 'react-redux';
 
 const CatalogCards = () => {
-    const products = useAppSelector(selectAllProducts);
+    const products = useSelector(selectAllProducts);
     return (
         <>
             <ul className={s.cardsFlex}>

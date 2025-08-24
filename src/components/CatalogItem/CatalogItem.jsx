@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './CatalogItem.module.css';
 import { FaStar } from 'react-icons/fa';
-import { FaRegHeart } from 'react-icons/fa6';
 import { SlMap } from "react-icons/sl";
 import Button from '../Button/Button';
 import { CATEGORIES } from '../../utils/categories';

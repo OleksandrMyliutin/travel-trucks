@@ -1,12 +1,12 @@
 import React from 'react';
 import { SlMap } from "react-icons/sl";
 import s from './Location.module.css';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setFilter } from '../../redux/products/slice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Location = () => {
-    const dispatch = useAppDispatch();
-    const location = useAppSelector(state => state.products.filter.location || '');
+    const dispatch = useDispatch();
+    const location = useSelector(state => state.products.filter.location || '');
 
     const handleChange = (e) => {
         dispatch(setFilter({ location: e.target.value }));

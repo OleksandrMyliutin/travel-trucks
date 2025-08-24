@@ -1,0 +1,38 @@
+.containerDetails{
+    margin-top: 60px;
+}
+
+.lineStyle{
+    border: none;
+    
+    height: 1px;
+    background:var(--color-grayLight);
+}
+
+.tabs {
+    display: flex;
+    column-gap: 40px;
+    margin-bottom: 24px;
+}
+.tabs a { 
+    color: var(--color-main); 
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    text-decoration: none;
+}
+.container{
+    position: relative;
+}
+.active { 
+    color: var(--color-main); 
+}
+.active::after{
+    content: "";
+    position: absolute;
+    left: -1px;
+    bottom: -27px;
+    width: 85px;
+    height: 6px;
+    background: var(--color-button);
+}

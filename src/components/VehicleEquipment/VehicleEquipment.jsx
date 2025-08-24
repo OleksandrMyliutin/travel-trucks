@@ -1,5 +1,4 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setFilter } from "../../redux/products/slice";
 
 import AC from '../../assets/icons/AC.svg'
@@ -8,10 +7,11 @@ import Kitchen from '../../assets/icons/Kitchen.svg'
 import TV from '../../assets/icons/TV.svg'
 import Bathroom from '../../assets/icons/Bathroom.svg'
 import s from './VehicleEquipment.module.css'
+import { useDispatch, useSelector } from "react-redux";
 
 const VehicleEquipment = () => {
-    const dispatch = useAppDispatch();
-    const selected = useAppSelector(state => state.products.filter.equipment || []);
+    const dispatch = useDispatch();
+    const selected = useSelector(state => state.products.filter.equipment || []);
 
     const options = [
         { label: "AC", value: "AC", icon: AC },

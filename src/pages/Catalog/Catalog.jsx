@@ -6,8 +6,6 @@ import Button from '../../components/Button/Button'
 import s from './Catalog.module.css'
 import CatalogCards from '../../components/CatalogCards/CatalogCards'
 
-
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { loadProducts } from '../../redux/products/operations';
 import { selectAllProducts, selectIsLoading } from '../../redux/products/selectors'
 
@@ -15,13 +13,14 @@ import { selectHasNextPage } from '../../redux/products/selectors';
 import { applyFilters, clearProducts, incrementPage } from '../../redux/products/slice';
 import LoadMore from '../../components/LoadMore/LoadMore'
 import { Loader } from '../../components/Loader/Loader'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const Catalog = () => {
-  const dispatch = useAppDispatch();
-  const isLoading = useAppSelector(selectIsLoading);
-  const products = useAppSelector(selectAllProducts);
-  const version = useAppSelector(s => s.products.filterVersion);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const products = useSelector(selectAllProducts);
+  const version = useSelector(s => s.products.filterVersion);
   useEffect(() => {
     dispatch(clearProducts());
     dispatch(loadProducts());
@@ -31,7 +30,7 @@ const Catalog = () => {
   };
 
 
-    const hasNextPage = useAppSelector(selectHasNextPage);
+    const hasNextPage = useSelector(selectHasNextPage);
 
     const handleLoadMore = () => {
         dispatch(incrementPage());

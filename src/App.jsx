@@ -1,9 +1,11 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home/Home"
 import Catalog from "./pages/Catalog/Catalog"
 import Details from "./pages/Details/Details"
 import Layout from "./components/Layout/Layout"
 import PageNotFound from "./pages/PageNotFound/PageNotFound"
+import Features from "./components/Features/Features"
+import Reviews from "./components/Reviews/Reviews"
 
 function App() {
 
@@ -19,10 +21,11 @@ function App() {
             path="/catalog"
             element={<Catalog/>}
           />
-          <Route
-            path="/catalog/:id"
-            element={<Details/>}
-          />
+          <Route path="/catalog/:id" element={<Details/>}>
+            <Route index element={<Navigate to="features" replace />} />
+            <Route path="features" element={<Features />} />
+            <Route path="reviews"  element={<Reviews  />} />
+          </Route>
           <Route
           path="*"
           element={<PageNotFound/>}/>

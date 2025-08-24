@@ -23,7 +23,7 @@ const CatalogCard = () => {
         <div className={s.card}>
             {/* Назва + загальна інформація */}
             <div className={s.header}>
-            <h3 className={s.title}>{product.name}</h3>
+            <h2 className={s.title}>{product.name}</h2>
             <div className={s.subInfo}>
                 <span className={s.rating}>
                 <FaStar className={s.star} /> {product.rating} (

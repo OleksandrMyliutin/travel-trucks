@@ -1,15 +1,16 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+
 import { setFilter } from '../../redux/products/slice';
 
 import Van from '../../assets/icons/van.svg';
 import FullyIntegrated from '../../assets/icons/fully-integrated.svg';
 import Alcove from '../../assets/icons/Alcove.svg';
 import s from './VehicleType.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const VehicleType = () => {
-    const dispatch = useAppDispatch();
-    const selected = useAppSelector(state => state.products.filter.form || "");
+    const dispatch = useDispatch();
+    const selected = useSelector(state => state.products.filter.form || "");
 
     const options = [
         { label: "Van", value: "panelTruck", icon: Van },
