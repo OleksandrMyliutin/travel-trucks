@@ -1,13 +1,23 @@
 import s from './CatalogCardDetails.module.css'
 import BookingForm from '../BookingForm/BookingForm'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { selectProduct } from '../../redux/products/selectors'
 import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { fetchProductById } from '../../utils/api'
 
-const CatalogCardDetails = ({id}) => {
-    const product = useSelector(state => selectProduct(state, id));
+const CatalogCardDetails = () => {
+    const { id } = useParams();
+    const reduxProduct = useSelector(state => selectProduct(state, id));
+    const [fallback, setFallback] = useState(null);
+    useEffect(() => {
+        if (!reduxProduct && id) {
+        fetchProductById(id)
+            .then(data => setFallback(data));
+        }
+    }, [id, reduxProduct]);
 
-    
+    const product = reduxProduct || fallback;
     return (
         <>
             <div className={s.containerDetails}>

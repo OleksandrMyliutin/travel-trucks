@@ -47,7 +47,7 @@ const CatalogItem = ({ product }) => {
                             return null;
                         })}
                     </div>
-                    <Button link to={`${'/catalog/'}${product.id}`}>Show more</Button>
+                    <Button link blank to={`${'/catalog/'}${product.id}`}>Show more</Button>
                 </div>
         </li>
     );

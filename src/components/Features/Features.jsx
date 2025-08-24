@@ -1,13 +1,17 @@
 import s from './Features.module.css'
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext} from 'react-router-dom';
 import { buildFeatureChips } from '../../utils/buildFeatureChips';
 import { buildVehicleDetails } from '../../utils/buildVehicleDetails';
 const Features = () => {
-  const { product } = useOutletContext();
-  const rows = buildVehicleDetails(product);
+  const { product, loading } = useOutletContext() || {};
+
+  if (loading || !product) return null; 
+
+  const chips = buildFeatureChips(product);
+  const rows  = buildVehicleDetails(product);
+
   if (!product) return null;
   
-  const chips = buildFeatureChips(product);
   return (
     <div className={s.containerFeatures}>
       <ul className={s.chips}>
