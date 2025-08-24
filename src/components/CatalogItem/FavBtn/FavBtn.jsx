@@ -1,9 +1,10 @@
 import React from 'react'
 import { FaRegHeart } from 'react-icons/fa'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { toggleFavoriteProduct } from '../../../redux/products/slice';
+
 
 import s from './FavBtn.module.css';
+import { toggleFavoriteProduct } from '../../../redux/products/slice';
 
 const FavBtn = ({ productId }) => {
     const dispatch = useAppDispatch();

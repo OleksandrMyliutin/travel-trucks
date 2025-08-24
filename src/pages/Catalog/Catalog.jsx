@@ -12,7 +12,7 @@ import { loadProducts } from '../../redux/products/operations';
 import { selectAllProducts, selectIsLoading } from '../../redux/products/selectors'
 
 import { selectHasNextPage } from '../../redux/products/selectors';
-import { incrementPage } from '../../redux/products/slice';
+import { applyFilters, clearProducts, incrementPage } from '../../redux/products/slice';
 import LoadMore from '../../components/LoadMore/LoadMore'
 import { Loader } from '../../components/Loader/Loader'
 
@@ -21,12 +21,21 @@ const Catalog = () => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(selectIsLoading);
   const products = useAppSelector(selectAllProducts);
+  const { filterVersion, filter } = useAppSelector(s => s.products);
   useEffect(() => {
+    dispatch(clearProducts());
     dispatch(loadProducts());
-  }, [dispatch]);
+  }, [dispatch, filterVersion]);
   const handleSearch = () => {
-    dispatch(loadProducts());
+   dispatch(applyFilters());
   };
+
+  useEffect(() => {
+    if (filter.page > 1) {
+      dispatch(loadProducts());
+    }
+  }, [dispatch, filter.page]);
+
     const hasNextPage = useAppSelector(selectHasNextPage);
 
     const handleLoadMore = () => {

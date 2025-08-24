@@ -1,3 +1,4 @@
+// src/redux/products/slice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { loadProducts } from './operations';
 
@@ -7,9 +8,10 @@ const initialState = {
     filter: {
         page: 1,
         perPage: 4,
-        equipment: [], // додаємо дефолт
-        type: "",      // додаємо дефолт
+        equipment: [],
+        type: "",
     },
+    filterVersion: 0,
     totalItems: 0,
     isLoading: false,
 };
@@ -25,7 +27,10 @@ const productSlice = createSlice({
 
         setFilter(state, action) {
         Object.assign(state.filter, action.payload);
-        state.filter.page = 1; // важливо: при зміні фільтрів — скидати на першу сторінку
+        },
+        applyFilters(state){
+        state.filter.page = 1;
+        state.filterVersion += 1;
         },
 
         removeFilter(state, action) {
@@ -43,9 +48,10 @@ const productSlice = createSlice({
             state.favoriteProducts = state.favoriteProducts.filter(
             (favId) => favId !== id
             );
-        } else {
-            state.favoriteProducts.push(id);
+            return;
         }
+
+        state.favoriteProducts.push(action.payload);
         },
 
         removeFavoriteProduct(state, action) {
@@ -62,12 +68,13 @@ const productSlice = createSlice({
         }));
         builder.addCase(loadProducts.fulfilled, (state, action) => {
         const { total, items } = action.payload;
-
-        if (state.items.length >= state.filter.page * state.filter.perPage)
-            return;
-
         state.totalItems = total;
-        state.items = [...state.items, ...items];
+        if (state.filter.page === 1) {
+            state.items = items;
+        } else {
+            state.items = [...state.items, ...items];
+        }
+
         state.isLoading = false;
         });
         builder.addCase(loadProducts.rejected, (state) => ({
@@ -80,6 +87,7 @@ const productSlice = createSlice({
 export const {
     clearProducts,
     setFilter,
+    applyFilters,
     removeFilter,
     incrementPage,
     toggleFavoriteProduct,
