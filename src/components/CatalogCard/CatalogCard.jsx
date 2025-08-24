@@ -4,6 +4,7 @@ import { fetchProductById } from "../../utils/api";
 import { FaStar } from "react-icons/fa";
 import { SlMap } from "react-icons/sl";
 import s from "./CatalogCard.module.css";
+import { formatPrice } from '../../utils/formatPrice';
 
 
 const CatalogCard = () => {
@@ -32,7 +33,7 @@ const CatalogCard = () => {
                 <SlMap size={16} className={s.SvgStyle}/> {product.location}
                 </span>
             </div>
-            <div className={s.price}>€{product.price}.00</div>
+            <div className={s.price}>€{formatPrice(product.price)}</div>
             </div>
     
             <ul className={s.galleryContainer}>
