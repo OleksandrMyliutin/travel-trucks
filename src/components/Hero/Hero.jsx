@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './Hero.module.css'
 import Button from '../Button/Button'
 

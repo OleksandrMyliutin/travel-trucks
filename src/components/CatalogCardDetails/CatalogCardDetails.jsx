@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './CatalogCardDetails.module.css'
 import BookingForm from '../BookingForm/BookingForm'
 import { NavLink, Outlet } from 'react-router-dom'
@@ -12,17 +11,17 @@ const CatalogCardDetails = ({id}) => {
     return (
         <>
             <div className={s.containerDetails}>
-                <div className={s.left}>
+                <div >
                     <nav className={s.tabs}>
                         <div className={s.container}><NavLink to="features" className={({isActive})=> isActive ? s.active : undefined}>Features</NavLink></div>
                         <div className={s.container}><NavLink to="reviews"  className={({isActive})=> isActive ? s.active : undefined}>Reviews</NavLink></div>
                     </nav>
                     <span><hr className={s.lineStyle}/></span>
-                    <Outlet context={{ product }} />
+                    <div className={s.content}>
+                        <Outlet context={{ product }} />
+                        <BookingForm camperId={id} />
+                    </div>
                 </div>
-                <aside className={s.right}>
-                    <BookingForm camperId={product.id} />
-                </aside>
             </div>
         </>
     )

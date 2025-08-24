@@ -2,19 +2,23 @@
     padding-top: 44px;
     padding-left: 52px;
     padding-right: 52px;
-    padding-bottom: 28px;
+    padding-bottom: 44px;
     margin-bottom: 80px;
     width: 631px;
+    height: 588px;
     margin-top: 44px;
     border-radius: 10px;
     background: var(--color-inputs);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .chips{ 
     display:flex; 
     flex-wrap:wrap; 
     gap:8px; 
-    margin-bottom: 100px; 
 }
 
 .chip{ 
@@ -40,13 +44,11 @@
     background:var(--color-grayLight);
 }
 
-.detailsBlock { 
-    margin-top: 12px; 
-}
 .title { 
     margin-bottom: 24px;
 }
 .specs { 
+    margin-top: 14px;
     display: flex;
     flex-direction: column;
     row-gap: 16px;

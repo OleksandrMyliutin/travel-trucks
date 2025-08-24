@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './LoadMore.module.css';
 
 const LoadMore = ({ onClick}) => {

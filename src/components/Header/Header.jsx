@@ -1,4 +1,3 @@
-import React from 'react'
 import svg from '../../assets/icons/Logo.svg'
 import s from './Header.module.css'
 import { NavLink } from 'react-router-dom'

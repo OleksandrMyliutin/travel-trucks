@@ -1,0 +1,65 @@
+.card{
+    border:1px solid var(--color-grayLight);;
+    border-radius: 10px;
+    padding-top:44px;
+    padding-left: 57px;
+    padding-right: 57px;
+    padding-bottom: 44px;
+    background:#fff;
+    box-shadow:0 1px 0 rgba(16,24,40,.04);
+
+    width: 641px;
+    height: 588px;
+    margin-top: 44px;
+    margin-bottom: 88px;
+}
+
+.title{ 
+    font-weight:700; 
+    color:var(--color-main,#0F172A); 
+}
+.subtitle{ 
+    margin-top:8px;
+    margin-bottom: 24px;
+    color:#64748B; 
+    font-size:14px; 
+}
+
+.input, .textarea{
+    width:100%;
+    border:none;
+    background:#F7F7FB;
+    border-radius:10px;
+    padding:18px 18px;
+    margin-bottom:14px;
+    font-size:14px;
+    color:#0F172A;
+    outline:none;
+    transition: box-shadow .15s, background .15s;
+}
+.input:focus, .textarea:focus{
+    background:#fff;
+    box-shadow:0 0 0 2px var(--color-button,#E44848) inset;
+}
+.textarea{ 
+    resize: none; 
+    min-height:118px; 
+}
+
+.invalid{ 
+    box-shadow:0 0 0 2px #ef4444 inset !important; 
+    background:#fff; 
+}
+.error{ 
+    margin-top:-6px; 
+    margin-bottom:10px; 
+    font-size:12px; 
+    color:#ef4444; 
+}
+
+.containerBtn{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 12px;
+}

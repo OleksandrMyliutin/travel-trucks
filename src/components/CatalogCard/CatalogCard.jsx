@@ -21,7 +21,6 @@ const CatalogCard = () => {
     if (!product) return <p>Loading...</p>;
     return (
         <div className={s.card}>
-            {/* Назва + загальна інформація */}
             <div className={s.header}>
             <h2 className={s.title}>{product.name}</h2>
             <div className={s.subInfo}>
@@ -36,8 +35,6 @@ const CatalogCard = () => {
             <div className={s.price}>€{product.price}.00</div>
             </div>
     
-            {/* Галерея */}
-
             <ul className={s.galleryContainer}>
                 {product.gallery?.map((img, idx) => (
                     <li key={idx} className={s.gallery}>
@@ -49,8 +46,7 @@ const CatalogCard = () => {
                     </li>
                 ))}
             </ul>
-    
-            {/* Опис */}
+
             <p className={s.description}>{product.description}</p>
         </div>
     )

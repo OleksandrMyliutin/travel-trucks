@@ -36,3 +36,9 @@
     height: 6px;
     background: var(--color-button);
 }
+
+.content{
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
+}

@@ -5,14 +5,12 @@
     margin-top: 48px;
 }
 
-/* ліва частина */
 .LocationFiltersContainer {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-/* права частина */
 .cards {
     display: flex;
     flex-direction: column;

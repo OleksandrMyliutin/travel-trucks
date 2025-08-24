@@ -1,7 +1,5 @@
-import React from 'react';
 import CatalogItem from '../CatalogItem/CatalogItem';
 import s from './CatalogCards.module.css';
-import LoadMore from '../LoadMore/LoadMore';
 import { selectAllProducts } from '../../redux/products/selectors';
 import { useSelector } from 'react-redux';
 

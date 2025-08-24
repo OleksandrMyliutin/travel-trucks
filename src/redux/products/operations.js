@@ -1,4 +1,3 @@
-// src/redux/products/operations.js
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchAllProducts } from '../../utils/api';
 import { clearProducts } from './slice';
@@ -21,7 +20,7 @@ const buildQuery = (filter) => {
         if (tok.startsWith("transmission=")) {
             transmission = tok.split("=")[1] || null;
         } else {
-            p.append(tok, "true"); // AC -> AC=true
+            p.append(tok, "true");
         }
         });
 

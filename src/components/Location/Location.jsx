@@ -1,4 +1,3 @@
-import React from 'react';
 import { SlMap } from "react-icons/sl";
 import s from './Location.module.css';
 import { setFilter } from '../../redux/products/slice';

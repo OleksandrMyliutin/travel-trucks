@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './Features.module.css'
 import { useOutletContext } from 'react-router-dom';
 import { buildFeatureChips } from '../../utils/buildFeatureChips';

@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './Filters.module.css'
 import VehicleEquipment from '../VehicleEquipment/VehicleEquipment'
 import VehicleType from '../VehicleType/VehicleType'

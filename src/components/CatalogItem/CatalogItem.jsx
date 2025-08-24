@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './CatalogItem.module.css';
 import { FaStar } from 'react-icons/fa';
 import { SlMap } from "react-icons/sl";

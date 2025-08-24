@@ -1,4 +1,3 @@
-import React from "react";
 import { setFilter } from "../../redux/products/slice";
 
 import AC from '../../assets/icons/AC.svg'

@@ -1,4 +1,3 @@
-// src/redux/store.js
 import { configureStore } from '@reduxjs/toolkit';
 import productReducer from './products/slice';
 import storage from 'redux-persist/lib/storage';
